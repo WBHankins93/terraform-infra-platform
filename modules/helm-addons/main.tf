@@ -38,7 +38,6 @@ resource "helm_release" "cluster_autoscaler" {
   depends_on = [var.depends_on_cluster]
 }
 
-
 -------------------------------------------------------------------------------------------
 
 resource "helm_release" "aws_load_balancer_controller" {
@@ -74,4 +73,21 @@ resource "helm_release" "aws_load_balancer_controller" {
   }
 
   depends_on = [var.depends_on_cluster]
+}
+
+-------------------------------------------------------------------------------------------
+
+resource "kubernetes_service_account" "alb_controller_sa" {
+  metadata {
+    name      = var.alb_service_account
+    namespace = var.namespace
+
+    annotations = {
+      "eks.amazonaws.com/role-arn" = var.alb_iam_role_arn
+    }
+
+    labels = {
+      "app.kubernetes.io/name" = "aws-load-balancer-controller"
+    }
+  }
 }
