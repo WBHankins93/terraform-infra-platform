@@ -109,30 +109,31 @@ terraform init -backend=false
 terraform plan -var-file="terraform.tfvars"
 ```
 
-✅ Use -backend=false during local development to avoid AWS credential issues.
+## ✅ Use Terraform Locally
 
-🛠 Next Steps & Extensions
-Add VPC Flow Logs
+Use `-backend=false` during local development to avoid AWS credential issues.
 
-Create IAM roles for EKS cluster
+---
 
-Provision Kubernetes (EKS) on top
+## 🛠️ Next Steps & Extensions
 
-Attach security groups for apps/load balancers
+- Add VPC Flow Logs  
+- Create IAM roles for EKS cluster  
+- Provision Kubernetes (EKS) on top  
+- Attach security groups for apps/load balancers  
 
-📚 Why This Repo is Great for SREs
-Clean module and overlay separation
+---
 
-GitHub Actions CI built-in for PR validation
+## 📚 Why This Repo is Great for SREs
 
-Clear separation of infrastructure layers
+- Clean module and overlay separation  
+- GitHub Actions CI built-in for PR validation  
+- Clear separation of infrastructure layers  
+- Human-readable output for onboarding and learning  
+- Real-world deployable code for dev environments  
 
-Human-readable output for onboarding and learning
+---
 
-Real-world deployable code for dev environments
+## 👨‍💻 Maintainer
 
-
-
-
-Maintainer
-Built by Ben Hankins
+Built by **Ben Hankins** as a reusable and teachable SRE VPC foundation.
