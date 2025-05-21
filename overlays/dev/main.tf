@@ -26,3 +26,12 @@ module "helm_addons" {
   aws_region          = "us-east-1"
   depends_on_cluster  = module.eks
 }
+
+module "alb_iam_role" {
+  source              = "../../modules/iam-load-balancer"
+  name                = var.name
+  namespace           = "kube-system"
+  service_account     = "aws-load-balancer-controller"
+  oidc_provider_arn   = module.eks.oidc_provider_arn
+  oidc_provider_url   = module.eks.oidc_provider_url
+}
