@@ -24,6 +24,8 @@ module "helm_addons" {
   cluster_certificate = module.eks.cluster_certificate
   kube_token          = var.kube_token
   aws_region          = "us-east-1"
+  vpc_id              = module.vpc.vpc_id
+  alb_service_account = "aws-load-balancer-controller"
   depends_on_cluster  = module.eks
 }
 
@@ -35,3 +37,4 @@ module "alb_iam_role" {
   oidc_provider_arn   = module.eks.oidc_provider_arn
   oidc_provider_url   = module.eks.oidc_provider_url
 }
+

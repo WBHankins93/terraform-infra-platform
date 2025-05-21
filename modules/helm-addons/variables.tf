@@ -22,3 +22,14 @@ variable "aws_region" {
 variable "depends_on_cluster" {
   description = "Reference to EKS cluster resource"
 }
+
+variable "vpc_id" {
+  type        = string
+  description = "VPC ID used by the ALB controller"
+}
+
+variable "alb_service_account" {
+  type        = string
+  default     = "aws-load-balancer-controller"
+  description = "ServiceAccount name used by ALB controller"
+}
