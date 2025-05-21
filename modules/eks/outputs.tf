@@ -12,3 +12,8 @@ output "cluster_certificate" {
   value       = aws_eks_cluster.eks.certificate_authority[0].data
   description = "EKS cluster certificate"
 }
+
+output "node_group_name" {
+  value       = aws_eks_node_group.default.node_group_name
+  description = "Name of the EKS node group"
+}
