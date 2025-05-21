@@ -6,6 +6,8 @@ provider "helm" {
   }
 }
 
+-------------------------------------------------------------------------------------------
+
 resource "helm_release" "cluster_autoscaler" {
   name       = "cluster-autoscaler"
   namespace  = "kube-system"
@@ -31,6 +33,44 @@ resource "helm_release" "cluster_autoscaler" {
   set {
     name  = "cloudProvider"
     value = "aws"
+  }
+
+  depends_on = [var.depends_on_cluster]
+}
+
+
+-------------------------------------------------------------------------------------------
+
+resource "helm_release" "aws_load_balancer_controller" {
+  name       = "aws-load-balancer-controller"
+  namespace  = "kube-system"
+  repository = "https://aws.github.io/eks-charts"
+  chart      = "aws-load-balancer-controller"
+  version    = "1.7.1"
+
+  set {
+    name  = "clusterName"
+    value = var.cluster_name
+  }
+
+  set {
+    name  = "region"
+    value = var.aws_region
+  }
+
+  set {
+    name  = "serviceAccount.create"
+    value = "false"
+  }
+
+  set {
+    name  = "serviceAccount.name"
+    value = var.alb_service_account
+  }
+
+  set {
+    name  = "vpcId"
+    value = var.vpc_id
   }
 
   depends_on = [var.depends_on_cluster]
