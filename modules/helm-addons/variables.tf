@@ -33,3 +33,14 @@ variable "alb_service_account" {
   default     = "aws-load-balancer-controller"
   description = "ServiceAccount name used by ALB controller"
 }
+
+variable "namespace" {
+  type        = string
+  default     = "kube-system"
+  description = "Namespace for Helm charts and service accounts"
+}
+
+variable "alb_iam_role_arn" {
+  type        = string
+  description = "IAM Role ARN for ALB Controller (IRSA)"
+}

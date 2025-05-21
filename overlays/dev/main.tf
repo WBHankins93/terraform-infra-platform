@@ -27,6 +27,8 @@ module "helm_addons" {
   vpc_id              = module.vpc.vpc_id
   alb_service_account = "aws-load-balancer-controller"
   depends_on_cluster  = module.eks
+  namespace           = "kube-system"
+  alb_iam_role_arn    = module.alb_iam_role.iam_role_arn
 }
 
 module "alb_iam_role" {
