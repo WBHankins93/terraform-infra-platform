@@ -5,9 +5,9 @@ on:
     paths:
       - 'overlays/dev/**'
       - 'modules/**'
-  push:
-    branches:
-      - main
+#   push:
+#     branches:
+#       - main
 
 jobs:
   terraform:
