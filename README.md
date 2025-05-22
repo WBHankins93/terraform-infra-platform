@@ -93,7 +93,7 @@ Add -backend=false during local development if avoiding S3 or OIDC setup
     - GitHub → Settings → Secrets and Variables → Actions
 
 
-Cleanup
+## Cleanup
 Once you're finished, destroy all resources with:
 
 ```bash
