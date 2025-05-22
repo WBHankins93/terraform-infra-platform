@@ -102,3 +102,6 @@ terraform destroy -var-file="terraform.tfvars"
 
 See docs/teardown.md for full cleanup process and best practices.
 
+## License
+MIT License — Open source, fork-friendly, and learning-focused.
+Maintained by Ben Hankins.
