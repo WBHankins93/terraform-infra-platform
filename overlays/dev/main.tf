@@ -40,3 +40,12 @@ module "alb_iam_role" {
   oidc_provider_url   = module.eks.oidc_provider_url
 }
 
+module "secrets_irsa" {
+  source              = "../../modules/secrets-irsa"
+  name                = var.name
+  namespace           = "default"
+  service_account     = "app-secret-reader"
+  secret_arns         = [aws_secretsmanager_secret.app_secret.arn]
+  oidc_provider_arn   = module.eks.oidc_provider_arn
+  oidc_provider_url   = module.eks.oidc_provider_url
+}
