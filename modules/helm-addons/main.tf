@@ -1,3 +1,7 @@
+##########################################
+# Provider Configuration
+##########################################
+
 provider "helm" {
   kubernetes {
     host                   = var.cluster_endpoint
@@ -6,7 +10,9 @@ provider "helm" {
   }
 }
 
--------------------------------------------------------------------------------------------
+##########################################
+# Helm Release: Cluster Autoscaler
+##########################################
 
 resource "helm_release" "cluster_autoscaler" {
   name       = "cluster-autoscaler"
@@ -38,7 +44,9 @@ resource "helm_release" "cluster_autoscaler" {
   depends_on = [var.depends_on_cluster]
 }
 
--------------------------------------------------------------------------------------------
+##########################################
+# Helm Release: ALB Controller
+##########################################
 
 resource "helm_release" "aws_load_balancer_controller" {
   name       = "aws-load-balancer-controller"
@@ -75,7 +83,9 @@ resource "helm_release" "aws_load_balancer_controller" {
   depends_on = [var.depends_on_cluster]
 }
 
--------------------------------------------------------------------------------------------
+##########################################
+# Service Account: ALB Controller
+##########################################
 
 resource "kubernetes_service_account" "alb_controller_sa" {
   metadata {
