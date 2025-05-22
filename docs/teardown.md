@@ -63,5 +63,6 @@ aws ec2 describe-vpcs
 aws iam list-roles | grep secrets-irsa
 aws secretsmanager list-secrets
 aws elbv2 describe-load-balancers
-All of these should return empty, or only show unrelated resources from other environments.
 ```
+
+All of these should return empty, or only show unrelated resources from other environments.
