@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: devx-checker-svc
+  labels:
+    app: devx-checker
+spec:
+  type: ClusterIP
+  selector:
+    app: devx-checker
+  ports:
+    - port: 80
+      targetPort: 3000

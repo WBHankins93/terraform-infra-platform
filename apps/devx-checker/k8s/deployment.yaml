@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devx-checker
+  labels:
+    app: devx-checker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devx-checker
+  template:
+    metadata:
+      labels:
+        app: devx-checker
+    spec:
+      serviceAccountName: secret-reader-sa # IRSA service account
+      containers:
+        - name: devx-checker
+          image: image: wbhankins93/devx-checker:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: DEVX_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: devx-secret
+                  key: message
