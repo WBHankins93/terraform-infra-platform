@@ -75,6 +75,10 @@ alb.ingress.kubernetes.io/target-type: ip
 
 ## 🛠️ Usage (Local)
 
+### 🔐 Developer Access
+
+See [docs/authentication.md](./docs/authentication.md) for how to access AWS and IBM Cloud credentials securely using 1Password CLI.
+
 ```bash
 cd overlays/dev
 terraform init
